@@ -25,6 +25,7 @@ export const searchUsers = async (req: Request, res: Response) => {
         }
 
         let users = await User.findAll({ where })
+
         res.json(users)
     } catch (error) {
         console.error('Error retrieving users:', error)
