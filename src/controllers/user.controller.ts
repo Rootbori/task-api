@@ -13,6 +13,7 @@ export const getUsers = async (req: Request, res: Response) => {
     }
 }
 
+
 // @ts-ignore
 export const searchUsers = async (req: Request, res: Response) => {
     try {
