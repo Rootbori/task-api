@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { Op } from 'sequelize'
 import User from '../models/user.model'
 
+// @ts-ignore
 export const getUsers = async (req: Request, res: Response) => {
     try {
         const users = await User.findAll()
@@ -12,6 +13,7 @@ export const getUsers = async (req: Request, res: Response) => {
     }
 }
 
+// @ts-ignore
 export const searchUsers = async (req: Request, res: Response) => {
     try {
         const { username } = req.body
