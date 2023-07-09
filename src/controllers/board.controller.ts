@@ -26,4 +26,3 @@ export const addBoard = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Error adding Board' })
     }
 }
-
