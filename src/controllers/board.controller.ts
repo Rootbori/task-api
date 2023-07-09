@@ -2,28 +2,16 @@ import { Request, Response } from 'express'
 
 const Sequelize = require('sequelize')
 import sequelize from '../database'
-import { verifyToken } from '../auth'
 
-const Board = require('../auto-models/boards')(sequelize, Sequelize.DataTypes)
+const BoardModel = require('../auto-models/boards.js')
+const Board = BoardModel(sequelize, Sequelize);
 
 export const getBoards = async (req: Request, res: Response) => {
     try {
-        const data = await Board.findAll()
-        res.json(data)
+        const datas = await Board.findAll()
+        res.json(datas)
     } catch (error) {
-        console.error('Error retrieving Board:', error)
-        res.status(500).json({ error: 'Error retrieving Board' })
+        console.error('Error retrieving users:', error)
+        res.status(500).json({ error: 'Error retrieving users' })
     }
 }
-
-export const addBoard = async (req: Request, res: Response) => {
-    try {
-        const { board_name } = req.body
-        const board = await Board.create({ board_name })
-        res.json(board)
-    } catch (error) {
-        console.error('Error adding Board:', error)
-        res.status(500).json({ error: 'Error adding Board' })
-    }
-}
-

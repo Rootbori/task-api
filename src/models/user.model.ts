@@ -2,13 +2,13 @@ import { Model, DataTypes } from 'sequelize'
 import sequelize from '../database'
 
 class User extends Model {
-    public userId!: number
+    public user_id!: number
     public username!: string
     public password!: string
     public email!: string
-    public facebookId!: string
-    public gmailId!: string
-    public createdAt!: Date
+    public facebook_id!: string
+    public gmail_id!: string
+    public created_at!: Date
 }
 
 User.init(
@@ -48,7 +48,7 @@ User.init(
         sequelize,
         modelName: 'User',
         tableName: 'users',
-        timestamps: false, // ออฟชันนี้ใช้ปิดการใช้งานฟิลด์ created_at ที่ถูกกำหนดเอง
+        timestamps: false,
     }
 )
 

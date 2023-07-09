@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "ts-node src/index.ts",
-    "generate": "npx sequelize-auto -o \"./src/auto-models\" -d rootbori -h 34.170.168.230 -u rootbori -p 5432 -x Godkiller12 -e postgres"
+    "generate": "npx sequelize-auto -o \"./src/auto-models\" -d rootbori -h 34.170.168.230 -u rootbori -p 5432 -x Godkiller12 -e postgres --dialect-typescript"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
