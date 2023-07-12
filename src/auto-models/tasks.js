@@ -1,26 +1,65 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('tasks', {
-    task_id: {
+    taskid: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    list_id: {
+    taskname: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    taskdescription: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    taskstatus: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      defaultValue: "To Do"
+    },
+    boardid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'lists',
-        key: 'list_id'
+        model: 'boards',
+        key: 'boardid'
       }
     },
-    task_name: {
-      type: DataTypes.STRING(255),
+    statusid: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'taskstatus',
+        key: 'statusid'
+      }
+    },
+    datestart: {
+      type: DataTypes.DATEONLY,
       allowNull: true
     },
-    task_order: {
+    createdby: {
       type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'users',
+        key: 'userid'
+      }
+    },
+    createdat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    updatedat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    dateend: {
+      type: DataTypes.DATEONLY,
       allowNull: true
     }
   }, {
@@ -30,10 +69,10 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false,
     indexes: [
       {
-        name: "lists_pkey_1",
+        name: "tasks_pkey",
         unique: true,
         fields: [
-          { name: "task_id" },
+          { name: "taskid" },
         ]
       },
     ]

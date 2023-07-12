@@ -2,7 +2,6 @@ import { Request, Response } from 'express'
 
 const Sequelize = require('sequelize')
 import sequelize from '../database'
-import { verifyToken } from '../auth'
 
 const Board = require('../auto-models/boards')(sequelize, Sequelize.DataTypes)
 

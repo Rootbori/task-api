@@ -1,23 +1,27 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('boards', {
-    boardid: {
+  return sequelize.define('tasklists', {
+    tasklistid: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    boardname: {
+    tasklistname: {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    userid: {
+    taskid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'users',
-        key: 'userid'
+        model: 'tasks',
+        key: 'taskid'
       }
+    },
+    imagefilename: {
+      type: DataTypes.TEXT,
+      allowNull: true
     },
     createdby: {
       type: DataTypes.INTEGER,
@@ -39,15 +43,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'boards',
+    tableName: 'tasklists',
     schema: 'public',
     timestamps: false,
     indexes: [
       {
-        name: "boards_pkey",
+        name: "tasklists_pkey",
         unique: true,
         fields: [
-          { name: "boardid" },
+          { name: "tasklistid" },
         ]
       },
     ]

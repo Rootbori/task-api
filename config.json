@@ -3,7 +3,8 @@
     "username": "rootbori",
     "password": "Godkiller12",
     "database": "rootbori",
-    "host": "34.170.168.230",
-    "dialect": "postgres"
+    "host": "rootbori-task.cmhsliebtiim.us-east-1.rds.amazonaws.com",
+    "dialect": "postgres",
+    "port": 5432
   }
 }

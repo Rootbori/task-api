@@ -4,7 +4,7 @@ const sequelize = new Sequelize({
     database: 'rootbori',
     username: 'rootbori',
     password: 'Godkiller12',
-    host: '34.170.168.230',
+    host: 'rootbori-task.cmhsliebtiim.us-east-1.rds.amazonaws.com',
     port: 5432,
     dialect: 'postgres',
 });

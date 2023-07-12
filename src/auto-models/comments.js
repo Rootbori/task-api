@@ -1,23 +1,53 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('comments', {
-    comment_id: {
+    commentid: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    card_id: {
+    commenttext: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    userid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'cards',
-        key: 'card_id'
+        model: 'users',
+        key: 'userid'
       }
     },
-    comment_text: {
+    taskid: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'tasks',
+        key: 'taskid'
+      }
+    },
+    imagefilename: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    createdby: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'users',
+        key: 'userid'
+      }
+    },
+    createdat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    updatedat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     sequelize,
@@ -29,7 +59,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "comments_pkey",
         unique: true,
         fields: [
-          { name: "comment_id" },
+          { name: "commentid" },
         ]
       },
     ]

@@ -1,31 +1,54 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('users', {
-    user_id: {
+    userid: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     username: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    useremail: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      unique: "users_useremail_key"
+    },
+    userpassword: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    imagefilename: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
-    password: {
-      type: DataTypes.STRING(255),
+    facebookid: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
-    email: {
-      type: DataTypes.STRING(255),
+    gmailid: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
-    facebook_id: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+    createdby: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'users',
+        key: 'userid'
+      }
     },
-    gmail_id: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+    createdat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    updatedat: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     sequelize,
@@ -37,7 +60,14 @@ module.exports = function(sequelize, DataTypes) {
         name: "users_pkey",
         unique: true,
         fields: [
-          { name: "user_id" },
+          { name: "userid" },
+        ]
+      },
+      {
+        name: "users_useremail_key",
+        unique: true,
+        fields: [
+          { name: "useremail" },
         ]
       },
     ]
