@@ -61,6 +61,16 @@ module.exports = function(sequelize, DataTypes) {
     dateend: {
       type: DataTypes.DATEONLY,
       allowNull: true
+    },
+    isactive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: true
+    },
+    isdrop: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false
     }
   }, {
     sequelize,

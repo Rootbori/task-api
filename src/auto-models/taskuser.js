@@ -18,6 +18,16 @@ module.exports = function(sequelize, DataTypes) {
         model: 'users',
         key: 'userid'
       }
+    },
+    isactive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: true
+    },
+    isdrop: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false
     }
   }, {
     sequelize,

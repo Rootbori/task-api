@@ -29,6 +29,16 @@ module.exports = function(sequelize, DataTypes) {
     modulecolor: {
       type: DataTypes.STRING(50),
       allowNull: true
+    },
+    isactive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: true
+    },
+    isdrop: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false
     }
   }, {
     sequelize,
